@@ -6,17 +6,12 @@ A full-stack web application that generates professional, casual, formal, or fri
 
 # Project Structure
 
-<<<<<<< HEAD
+
 ```text
 AI-Email-Generator/
 ├── backend/    # FastAPI application, database handlers, AI services
 └── frontend/   # Next.js App Router frontend
 ```
-=======
-- Backend/: FastAPI application, database handlers, and AI service endpoints.
-- Frontend/: Next.js App Router UI with modern styling, tone selection, history, and status updates.
->>>>>>> 0a878a82ba41737dc87771655dcc5ad6d5b7ae2d
-
 ---
 
 # Prerequisites
