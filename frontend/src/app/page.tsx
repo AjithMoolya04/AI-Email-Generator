@@ -42,7 +42,7 @@ const tones: Array<{ label: string; value: Tone }> = [
 ];
 
 const apiBaseUrl =
-  process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "http://127.0.0.1:8000";
+  process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "https://ai-email-generator-uwmh.onrender.com";
 
 function formatCreatedAt(value: string) {
   const date = new Date(value);
@@ -66,14 +66,8 @@ export default function Home() {
   const [error, setError] = useState("");
   const [copiedField, setCopiedField] = useState<"subject" | "email" | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [theme, setTheme] = useState<"dark" | "light">(() => {
-    if (typeof window === "undefined") {
-      return "dark";
-    }
-
-    const savedTheme = window.localStorage.getItem("ai-email-theme");
-    return savedTheme === "light" ? "light" : "dark";
-  });
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const mountedRef = useRef(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -108,7 +102,17 @@ export default function Home() {
   }, [copiedField]);
 
   useEffect(() => {
-    window.localStorage.setItem("ai-email-theme", theme);
+    const savedTheme = window.localStorage.getItem("ai-email-theme");
+    if (savedTheme === "light") {
+      setTheme("light");
+    }
+    mountedRef.current = true;
+  }, []);
+
+  useEffect(() => {
+    if (mountedRef.current) {
+      window.localStorage.setItem("ai-email-theme", theme);
+    }
   }, [theme]);
 
   useEffect(() => {

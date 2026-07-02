@@ -11,7 +11,7 @@ A full-stack web application that generates professional, casual, formal, or fri
 AI-Email-Generator/
 ├── backend/    # FastAPI application, database handlers, AI services
 └── frontend/   # Next.js App Router frontend
-```
+
 ---
 
 # Prerequisites
