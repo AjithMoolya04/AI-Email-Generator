@@ -197,8 +197,10 @@ After starting both the backend and frontend:
 | POST | `/api/generate-email` | Generate an email using the selected AI model |
 | GET | `/api/history` | Retrieve email generation history |
 
----
 
-# License
+## Deployment
 
-This project is intended for educational and demonstration purposes.
+- **Frontend (Vercel):** https://ai-email-generator-livid.vercel.app/
+- **Backend (Render):** https://ai-email-generator-uwmh.onrender.com
+- **Database:** MongoDB Atlas
+
