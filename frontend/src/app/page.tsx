@@ -408,7 +408,7 @@ export default function Home() {
 
                           <div className="space-y-4">
                             <div className={isDark ? "rounded-2xl border border-white/10 bg-white/5 p-4" : "rounded-2xl border border-slate-200 bg-slate-50 p-4"}>
-                              <div className="flex items-center justify-between gap-3">
+                              <div className={`flex items-center justify-between gap-3 border-b pb-2 mb-2 ${isDark ? "border-white/10" : "border-slate-200"}`}>
                                 <p className={isDark ? "text-xs font-semibold uppercase tracking-[0.25em] text-emerald-300/80" : "text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700"}>Subject</p>
                                 <button
                                   type="button"
@@ -418,11 +418,11 @@ export default function Home() {
                                   {copiedField === "subject" ? "Copied" : "Copy"}
                                 </button>
                               </div>
-                              <p className={isDark ? "mt-3 text-lg font-medium text-white" : "mt-3 text-lg font-medium text-slate-950"}>{message.subject}</p>
+                              <p className={isDark ? "text-base font-medium text-white" : "text-base font-medium text-slate-950"}>{message.subject}</p>
                             </div>
 
                             <div className={isDark ? "rounded-2xl border border-white/10 bg-white/5 p-4" : "rounded-2xl border border-slate-200 bg-slate-50 p-4"}>
-                              <div className="flex items-center justify-between gap-3">
+                              <div className={`flex items-center justify-between gap-3 border-b pb-2 mb-2 ${isDark ? "border-white/10" : "border-slate-200"}`}>
                                 <p className={isDark ? "text-xs font-semibold uppercase tracking-[0.25em] text-emerald-300/80" : "text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700"}>Email Body</p>
                                 <button
                                   type="button"
@@ -432,7 +432,7 @@ export default function Home() {
                                   {copiedField === "email" ? "Copied" : "Copy"}
                                 </button>
                               </div>
-                              <div className={isDark ? "mt-3 whitespace-pre-wrap rounded-2xl border border-white/10 bg-[#0b1020] px-4 py-4 text-sm leading-7 text-slate-100" : "mt-3 whitespace-pre-wrap rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm leading-7 text-slate-900"}>
+                              <div className="whitespace-pre-wrap text-sm leading-7">
                                 {message.body}
                               </div>
                             </div>
@@ -461,24 +461,24 @@ export default function Home() {
             </div>
           </div>
 
-          <footer className={isDark ? "shrink-0 border-t border-white/10 bg-[#0f1524] px-4 py-4 sm:px-6 lg:px-8" : "shrink-0 border-t border-slate-200 bg-white px-4 py-4 sm:px-6 lg:px-8"}>
-            <div className="mx-auto w-full max-w-4xl space-y-3">
+          <footer className={isDark ? "shrink-0 border-t border-white/10 bg-[#0f1524] px-4 py-3 sm:px-6 lg:px-8" : "shrink-0 border-t border-slate-200 bg-white px-4 py-3 sm:px-6 lg:px-8"}>
+            <div className="mx-auto w-full max-w-4xl space-y-2">
               <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
                 <textarea
                   value={prompt}
                   onChange={(event) => setPrompt(event.target.value)}
                   placeholder="Write a follow-up email after an interview"
-                  className={isDark ? "min-h-24 w-full resize-none rounded-3xl border border-white/10 bg-[#0b1020] px-4 py-4 text-sm leading-6 text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-400/50" : "min-h-24 w-full resize-none rounded-3xl border border-slate-200 bg-white px-4 py-4 text-sm leading-6 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-emerald-400/50"}
+                  className={isDark ? "min-h-[46px] w-full resize-none rounded-2xl border border-white/10 bg-[#0b1020] px-4 py-[11px] text-sm leading-6 text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-400/50" : "min-h-[46px] w-full resize-none rounded-2xl border border-slate-200 bg-white px-4 py-[11px] text-sm leading-6 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-emerald-400/50"}
                 />
                 <button
                   type="button"
                   onClick={state === "loading" ? handleInterrupt : handleGenerate}
                   disabled={!canSubmit && state !== "loading"}
                   aria-label={state === "loading" ? "Stop generating email" : "Send email request"}
-                  className={isDark ? "group inline-flex h-24 min-w-[8.5rem] items-center justify-center gap-3 rounded-3xl bg-emerald-400 px-6 text-sm font-semibold text-slate-950 transition-all duration-200 ease-out hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-60" : "group inline-flex h-24 min-w-[8.5rem] items-center justify-center gap-3 rounded-3xl bg-slate-950 px-6 text-sm font-semibold text-white transition-all duration-200 ease-out hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"}
+                  className={isDark ? "group inline-flex h-[46px] min-w-[7.5rem] items-center justify-center gap-2.5 rounded-2xl bg-emerald-400 px-5 text-sm font-semibold text-slate-950 transition-all duration-200 ease-out hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-60" : "group inline-flex h-[46px] min-w-[7.5rem] items-center justify-center gap-2.5 rounded-2xl bg-slate-950 px-5 text-sm font-semibold text-white transition-all duration-200 ease-out hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"}
                 >
                   <span
-                    className={`flex h-8 w-8 items-center justify-center rounded-full transition-all duration-200 ease-out ${
+                    className={`flex h-6 w-6 items-center justify-center rounded-full transition-all duration-200 ease-out ${
                       state === "loading"
                         ? isDark
                           ? "bg-rose-500/15 text-rose-700"
@@ -489,26 +489,26 @@ export default function Home() {
                     }`}
                   >
                     {state === "loading" ? (
-                      <span className="h-3.5 w-3.5 rounded-sm bg-current transition-transform duration-200 ease-out" />
+                      <span className="h-2.5 w-2.5 rounded-sm bg-current transition-transform duration-200 ease-out" />
                     ) : (
                       <svg
                         viewBox="0 0 20 20"
                         fill="currentColor"
-                        className="h-4 w-4 translate-x-[1px] transition-transform duration-200 ease-out group-hover:translate-x-[2px]"
+                        className="h-3 w-3 translate-x-[0.5px] transition-transform duration-200 ease-out group-hover:translate-x-[1.5px]"
                         aria-hidden="true"
                       >
                         <path d="M3.5 3.25a1 1 0 0 0-1.5.86v11.78a1 1 0 0 0 1.5.86l11.78-5.89a1 1 0 0 0 0-1.78L3.5 3.25Z" />
                       </svg>
                     )}
                   </span>
-                  <span className="transition-all duration-200 ease-out">
+                  <span className="transition-all duration-200 ease-out text-sm">
                     {state === "loading" ? "Stop" : "Send"}
                   </span>
                 </button>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex flex-wrap gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-wrap gap-1.5">
                   {tones.map((item) => {
                     const active = tone === item.value;
 
@@ -517,7 +517,7 @@ export default function Home() {
                         key={`composer-${item.value}`}
                         type="button"
                         onClick={() => setTone(item.value)}
-                        className={`rounded-full border px-4 py-2 text-xs font-medium transition ${
+                        className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${
                           active
                             ? isDark
                               ? "border-emerald-400/50 bg-emerald-400/10 text-emerald-200"
@@ -533,11 +533,11 @@ export default function Home() {
                   })}
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   <select
                     value={model}
                     onChange={(e) => setModel(e.target.value)}
-                    className={isDark ? "rounded-full border border-white/10 bg-[#0b1020] px-4 py-2 text-xs font-medium text-slate-300 outline-none transition focus:border-emerald-400/50" : "rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-700 outline-none transition focus:border-emerald-400/50"}
+                    className={isDark ? "rounded-full border border-white/10 bg-[#0b1020] px-3 py-1.5 text-xs font-medium text-slate-300 outline-none transition focus:border-emerald-400/50" : "rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 outline-none transition focus:border-emerald-400/50"}
                   >
                     <option value="gemini">Gemini 2.5 Flash</option>
                     <option value="openai">OpenAI (OpenRouter)</option>
@@ -545,8 +545,8 @@ export default function Home() {
                   </select>
                 </div>
 
-                <div className={isDark ? "flex flex-wrap gap-2 text-xs text-slate-400" : "flex flex-wrap gap-2 text-xs text-slate-500"}>
-                  <span className={isDark ? "rounded-full border border-white/10 bg-white/5 px-3 py-1" : "rounded-full border border-slate-200 bg-white px-3 py-1"}>
+                <div className={isDark ? "flex flex-wrap gap-1.5 text-xs text-slate-400" : "flex flex-wrap gap-1.5 text-xs text-slate-500"}>
+                  <span className={isDark ? "rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5" : "rounded-full border border-slate-200 bg-white px-2.5 py-0.5"}>
                     {prompt.trim().length}/2000
                   </span>
                 </div>
